@@ -1,0 +1,145 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ffffff;
+    height: 100vh;
+    font-family: "Poppins", serif
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.about-us-head{
+    margin: 20px auto;
+    position: relative;
+}
+
+.head{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.about-us-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 55px;
+}
+
+.about-us-image{
+    margin-right: 40px;
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.about-us-content{
+    flex: 1;
+    color: #1e1e1c
+}
+
+.about-us-image img{
+    width: 100%;
+    display: block;
+    height: auto;
+    transition: .4s ease-in-out;
+}
+
+.about-us-image:hover img{
+    transform: scale(1.1);
+}
+
+.content-head{
+    font-size: 35px;
+    font-weight: 400;
+    position: relative;
+}
+
+.content-head::before{
+    content: "";
+    position: absolute;
+    width: 115px;
+    height: 2px;
+    background-color: black;
+    bottom: 5px;
+}
+
+.content{
+    font-size: 18px;
+    margin: 15px 0;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.content-button{
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 19px;
+    background-color: #383434;
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.content-button:hover{
+    background-color: #000;
+}
+
+@media only screen and (max-width:750px){
+    .head{
+        font-size: 34px;
+    }
+
+    .about-us-wrapper{
+        flex-direction: column;
+    }
+
+    .about-us-image{
+        margin-right: 0px;
+        margin-bottom: 20px;
+    }
+
+    .content{
+        font-size: 16px;
+    }
+
+    .content-button{
+        font-size: 16px;
+    }
+}
+
+/* BACK BUTTON STYLE */
+.back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.back-button i {
+    font-size: 20px;
+}

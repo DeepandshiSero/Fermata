@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Profile - Fermata</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Profile.css}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">
+        <img th:src="@{/images/logo_fermata-removebg-preview.png}">
+    </a>
+
+    <ul class="navbar">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/#sheets}">Sheets</a></li>
+        <li><a th:href="@{/#trainings}">Trainings</a></li>
+        <li><a th:href="@{/#contact}">Contact Us</a></li>
+    </ul>
+
+    <div class="nav-icons">
+        <a th:href="@{/cart}" class="icon-btn" aria-label="Cart">
+            <img th:src="@{/images/cart.png}" alt="Cart">
+        </a>
+        <a th:href="@{/profile}" class="icon-btn" aria-label="Account">
+            <img th:src="@{/images/user.jpg}" alt="User">
+        </a>
+    </div>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+</header>
+
+<!--Profile Section-->
+<section class="profile-section" id="profile">
+    <div class="profile-card">
+        <div class="profile-pic">
+            <img th:src="@{/images/user.jpg}" alt="Profile Picture">
+        </div>
+
+        <h3 class="profile-username" th:text="${'@' + user.username}">@username</h3>
+        <h2 class="profile-name" th:text="${user.fullName}">Full Name</h2>
+
+        <div class="profile-actions">
+            <a th:href="@{/courses}" class="profile-btn">View current courses</a>
+            <a th:href="@{/cart}" class="profile-btn profile-btn-outline">View orders</a>
+            <a th:href="@{/admin}" class="profile-btn profile-btn-outline" th:if="${user.role == 'ROLE_ADMIN'}">Admin Page</a>
+            <a th:href="@{/logout}" class="profile-btn profile-btn-danger">Log out</a>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" th:src="@{/js/Fermata.js}"></script>
+</body>
+</html>

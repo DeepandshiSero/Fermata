@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" th:href="@{/css/Checkout.css}" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+            crossorigin="anonymous"
+    />
+</head>
+<body>
+<a class="back-button" th:href="@{/}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+<div class="checkout-wrapper">
+    <div class="checkout-card">
+        <h2 class="checkout-title">Your Cart</h2>
+
+        <div class="cart-items" th:if="${!cartItems.isEmpty()}">
+            <div class="cart-item" th:each="item : ${cartItems}">
+                <img th:src="${item.imageUrl}" alt="item image" class="cart-item-img" />
+
+                <div class="cart-item-info">
+                    <h3 th:text="${item.name}">Item Name</h3>
+                    <p class="cart-item-price">$<span th:text="${item.price}">0.00</span> each</p>
+                </div>
+
+                <div class="cart-item-qty">
+                    <span th:text="${item.quantity}">1</span>
+                </div>
+
+                <div class="cart-item-subtotal">
+                    $<span th:text="${#numbers.formatDecimal(item.price * item.quantity, 1, 2)}">0.00</span>
+                </div>
+
+                <form th:action="@{/cart/remove}" method="post" class="cart-item-remove">
+                    <input type="hidden" name="id" th:value="${item.id}" />
+                    <button type="submit" aria-label="Remove item">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="cart-empty" th:if="${cartItems.isEmpty()}">
+            <p>Your cart is empty.</p>
+            <a th:href="@{/details}" class="product-link">Browse Sheet Music</a>
+        </div>
+
+        <div class="checkout-summary" th:if="${!cartItems.isEmpty()}">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>$<span th:text="${#numbers.formatDecimal(cartTotal, 1, 2)}">0.00</span></span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span>Free</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Total</span>
+                <span>$<span th:text="${#numbers.formatDecimal(cartTotal, 1, 2)}">0.00</span></span>
+            </div>
+
+            <button type="button" class="btn checkout-btn">Proceed to Payment</button>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/Checkout.js}"></script>
+</body>
+</html>

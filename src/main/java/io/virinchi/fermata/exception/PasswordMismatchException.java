@@ -1,0 +1,8 @@
+package io.virinchi.fermata.exception;
+
+public class PasswordMismatchException extends RuntimeException {
+
+    public PasswordMismatchException(String message) {
+        super(message);
+    }
+}

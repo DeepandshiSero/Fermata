@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Product Card/Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" th:href="@{/css/Product.css}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+        <a class="back-button" th:href="@{/}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <a class="back-button" th:href="@{/}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <a class="cart-button" th:href="@{/checkout}" aria-label="Cart">
+          <img th:src="@{/images/cart.png}" alt="Cart" />
+        </a>
+    <div class="card-wrapper">
+      <div class="card">
+        <div class="product-imgs">
+          <div class="img-select">
+            <div class="img-item"><a href="#" data-id="1"><img th:src="@{/images/furelise - Copy.png}" alt="thumb" /></a></div>
+            <div class="img-item"><a href="#" data-id="2"><img th:src="@{/images/waltz.png}" alt="thumb" /></a></div>
+            <div class="img-item"><a href="#" data-id="3"><img th:src="@{/images/bach.png}" alt="thumb" /></a></div>
+            <div class="img-item"><a href="#" data-id="4"><img th:src="@{/images/CanoninD.png}" alt="thumb" /></a></div>
+          </div>
+          <div class="img-display">
+            <div class="img-showcase">
+              <img th:src="@{/images/furelise - Copy.png}" alt="product image" />
+              <img th:src="@{/images/waltz.png}" alt="product image" />
+              <img th:src="@{/images/prelude.png}" alt="product image" />
+              <img th:src="@{/images/CanoninD.png}" alt="product image" />
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <h2 class="product-title">Beginner Music Sheets</h2>
+          <a th:href="@{/}" class="product-link">Visit Fermata Music</a>
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>4.7 (21)</span>
+          </div>
+
+          <div class="product-price">
+            <p class="new-price">Price: <span>$50.00 </span></p>
+          </div>
+
+          <div class="product-detail">
+            <h2>About this item:</h2>
+            <p>Explore timeless classics with these high-quality sheet music prints.</p>
+            <p>Perfect for students, beginner musicians and music enthusiasts.</p>
+            <ul>
+              <li>Category: <span>Sheet Music</span></li>
+              <li>Available: <span>In Stock</span></li>
+              <li>Shipping: <span>Worldwide - Free</span></li>
+              <li>Printable: <span>Yes</span></li>
+            </ul>
+          </div>
+
+          <div class="purchase-info">
+            <input type="number" id="qty-input" min="1" value="1" />
+            <button
+                    type="button"
+                    class="btn"
+                    id="add-to-cart-btn"
+                    data-id="1"
+                    data-name="Beginner Music Sheets"
+                    data-price="50.00"
+                    data-image="/images/furelise - Copy.png"
+            >
+              Add to Cart <i class="fas fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script th:src="@{/js/Product.js}"></script>
+  </body>
+</html>

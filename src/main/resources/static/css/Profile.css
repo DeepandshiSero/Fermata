@@ -1,0 +1,143 @@
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 140px 18% 80px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--bg-color);
+    padding: 50px 60px;
+    border-radius: 20px;
+    box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+    max-width: 420px;
+    width: 100%;
+}
+
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+    margin-bottom: 24px;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-username {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--second-color);
+    margin-bottom: 6px;
+}
+
+.profile-name {
+    font-size: var(--h2-font);
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.profile-btn {
+    display: inline-block;
+    font-size: 16px;
+    padding: 15px 30px;
+    background: var(--main-color);
+    color: var(--bg-color);
+    border-radius: 15px;
+    transition: ease 0.4s;
+    text-align: center;
+}
+
+.profile-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+}
+
+.profile-btn-outline {
+    background: var(--bg-color);
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+}
+
+.profile-btn-danger {
+    background: var(--bg-color);
+    color: #c0392b;
+    border: 1px solid #c0392b;
+}
+
+.profile-btn-danger:hover {
+    background: #c0392b;
+    color: var(--bg-color);
+}
+
+.courses-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.courses-list {
+    list-style: none;
+    width: 100%;
+    margin: 10px 0 30px;
+    padding: 0;
+    text-align: left;
+}
+
+.courses-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 4px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.course-name {
+    font-weight: 500;
+}
+
+.course-status {
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.status-yes {
+    background: #e6f4ea;
+    color: #1e7e34;
+}
+
+.status-no {
+    background: #fbeaea;
+    color: #c0392b;
+}
+
+@media (max-width: 575px) {
+    .profile-card {
+        padding: 40px 30px;
+    }
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Piano Lessons</title>
+  <meta name="description" content="Interactive piano lessons preview and selection page." />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" th:href="@{/css/Piano.css}" />
+  <!-- Custom JS -->
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <a th:href="@{/}" class="back-button"><i class="fas fa-arrow-left"></i></a>
+    <h3 class="title">Piano Lessons</h3>
+  </div>
+
+  <div class="products-container">
+    <div class="product">
+      <img th:src="@{/images/Piano1.jpg}" alt="Introduction to Piano" />
+      <h3>Lesson 1</h3>
+      <div class="description">Introduction to Piano</div>
+    </div>
+
+    <div class="product">
+      <img th:src="@{/images/BothHands.jpg}" alt="Playing with Both Hands" />
+      <h3>Lesson 2</h3>
+      <div class="description">Learning to play with both hands</div>
+    </div>
+
+    <div class="product">
+      <img th:src="@{/images/pexels-cottonbro-9419401.jpg}" alt="Intermediate Techniques" />
+      <h3>Lesson 3</h3>
+      <div class="description">Intermediate Techniques</div>
+    </div>
+
+    <div class="product">
+      <img th:src="@{/images/pexels-pixabay-164737.jpg}" alt="Playing Scales" />
+      <h3>Lesson 4</h3>
+      <div class="description">Learning Scales</div>
+    </div>
+
+    <div class="product">
+      <img th:src="@{/images/pexels-leofgz-8322888.jpg}" alt="Advanced Scales Practice" />
+      <h3>Lesson 5</h3>
+      <div class="description">Learning advanced Scales</div>
+    </div>
+
+    <div class="product">
+      <img th:src="@{/images/pexels-pixabay-221592.jpg}" alt="Arpeggios & Flow" />
+      <h3>Lesson 6</h3>
+      <div class="description">Arpeggios & Flow</div>
+    </div>
+  </div>
+
+  <div class="signup-prompt" th:if="${pianoEnrolled}">
+    <p>You have signed up for these lessons successfully!</p>
+  </div>
+
+  <div class="signup-prompt" th:unless="${pianoEnrolled}">
+    <p>Would you like to sign up for these Piano lessons?</p>
+    <div class="signup-actions">
+      <form th:action="@{/piano/enroll}" method="post">
+        <button type="submit" class="signup-btn signup-yes">Yes</button>
+      </form>
+      <a th:href="@{/}" class="signup-btn signup-no">No</a>
+    </div>
+  </div>
+  </div>
+</div>
+
+</body>
+</html>

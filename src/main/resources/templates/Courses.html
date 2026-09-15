@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Courses - Fermata</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Profile.css}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">
+        <img th:src="@{/images/logo_fermata-removebg-preview.png}">
+    </a>
+
+    <ul class="navbar">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/#sheets}">Sheets</a></li>
+        <li><a th:href="@{/#trainings}">Trainings</a></li>
+        <li><a th:href="@{/#contact}">Contact Us</a></li>
+    </ul>
+
+    <div class="nav-icons">
+        <a th:href="@{/cart}" class="icon-btn" aria-label="Cart">
+            <img th:src="@{/images/cart.png}" alt="Cart">
+        </a>
+        <a th:href="@{/profile}" class="icon-btn" aria-label="Account">
+            <img th:src="@{/images/user.jpg}" alt="User">
+        </a>
+    </div>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+</header>
+
+<section class="profile-section" id="courses">
+    <div class="profile-card">
+        <h2 class="courses-title">Your Current Courses</h2>
+
+        <ul class="courses-list">
+            <li>
+                <span class="course-name">Piano</span>
+                <span class="course-status" th:classappend="${pianoEnrolled} ? 'status-yes' : 'status-no'"
+                      th:text="${pianoEnrolled} ? 'Yes' : 'No'">No</span>
+            </li>
+            <li>
+                <span class="course-name">Violin</span>
+                <span class="course-status status-no">No</span>
+            </li>
+            <li>
+                <span class="course-name">Flute</span>
+                <span class="course-status status-no">No</span>
+            </li>
+            <li>
+                <span class="course-name">Trumpet</span>
+                <span class="course-status status-no">No</span>
+            </li>
+        </ul>
+
+        <div class="profile-actions">
+            <a th:href="@{/profile}" class="profile-btn profile-btn-outline">Back to Profile</a>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" th:src="@{/js/Fermata.js}"></script>
+</body>
+</html>

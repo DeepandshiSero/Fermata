@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    position: relative;
+    width: 380px;
+    padding: 2.5rem 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    z-index: 10;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    color: #555;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #07001f;
+    margin-bottom: 1.2rem;
+}
+
+.logo img {
+    height: 40px;
+    transform: scale(1.6);
+    transform-origin: center;
+    margin-bottom: 25px;
+}
+
+form input {
+    width: 92%;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+}
+
+input:focus {
+    border: 1px solid rgb(0, 0, 0);
+}
+
+button {
+    font-size: 1rem;
+    margin-top: 1.8rem;
+    padding: 10px 0;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    width: 90%;
+    color: #e8e8e8;
+    cursor: pointer;
+    background: rgb(0, 0, 0);
+}
+
+button:hover {
+    background: rgba(143, 143, 143, 0.877);
+}
+
+.terms {
+    margin-top: 0.2rem;
+}
+
+.terms input {
+    height: 1em;
+    width: 1em;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.terms label {
+    font-size: 0.7rem;
+}
+
+.terms a {
+    color: rgb(10, 186, 255);
+    text-decoration: none;
+}
+
+.member {
+    font-size: 0.8rem;
+    margin-top: 1.4rem;
+    color: #636363;
+}
+
+.member a {
+    color: rgb(0, 183, 255);
+    text-decoration: none;
+}
+
+.recover {
+    text-align: right;
+    font-size: 0.7rem;
+    margin: 0.3rem 1.4rem 0 0;
+}
+
+.recover a {
+    text-decoration: none;
+    color: #464647;
+}
+.back-button {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+    background-color: #e4e4e4;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+.alert-danger {
+    background-color: #ffe6e6;
+    color: #d93025;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    border: 1px solid #f5c2c7;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #e6f4ea;
+    color: #137333;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    border: 1px solid #ceead6;
+    text-align: center;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.field-error {
+    color: #d93025;
+    font-size: 0.72rem;
+    text-align: left;
+    margin-top: -6px;
+    margin-bottom: 8px;
+    padding-left: 20px;
+}
+
+/* Password field wrapper and toggle icon */
+.password-field {
+    position: relative;
+    width: 92%;
+    margin: 0 auto 10px auto;
+}
+
+.password-field input {
+    width: 100%;
+    margin-bottom: 0;
+    padding-right: 48px;
+}
+
+.password-field .toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    font-size: 1rem;
+    user-select: none;
+    z-index: 2;
+    transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.password-field .toggle-password:hover {
+    color: #000;
+}
+
+.password-field .toggle-password:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+.password-field .toggle-password:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Disable native browser password reveal icon to prevent duplicates */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+

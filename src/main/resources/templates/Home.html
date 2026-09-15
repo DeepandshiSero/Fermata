@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fermata Music Learning Website</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">
+        <img th:src="@{/images/logo_fermata-removebg-preview.png}">
+    </a>
+
+    <ul class="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sheets">Sheets</a></li>
+        <li><a href="#trainings">Trainings</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+
+    <div class="nav-icons">
+        <a th:href="@{/checkout}" class="icon-btn" aria-label="Cart">
+            <img th:src="@{/images/cart.png}" alt="Cart">
+        </a>
+        <a th:href="@{/profile}" class="icon-btn" aria-label="Account">
+            <img th:src="@{/images/user.jpg}" alt="User">
+        </a>
+    </div>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+</header>
+
+    <!--Home Section-->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Welcome to <br> Fermata</h1>
+            <p>A focused space for musicians to pause, reflect and grow- <br> One note at a time.</p>
+            <a th:href="@{/signup}" class="home-btn">Start now</a>
+        </div>
+    </section>
+
+    <!--container-->
+    <section class="container">
+        <div class="text">
+            <h2>Start Your Music journey with us Today!</h2>
+        </div>
+
+        <div class="row-items">
+            <div class="container-box">
+                 <a th:href="@{/piano}" style="display: block; text-decoration: none; color: inherit;">
+                    <div class="container-img">
+                        <img th:src="@{/images/piano (1).png}" alt="Piano">
+                     </div>
+                <h4>Piano</h4>
+                    <p>Click to view lessons</p>
+                </a>
+            </div>
+
+            <div class="container-box">
+                <div class="container-img">
+                    <img th:src="@{/images/violin (1).png}">
+                </div>
+                <h4>Violin</h4>
+                <p></p>
+            </div>
+
+            <div class="container-box">
+                <div class="container-img">
+                    <img th:src="@{/images/flute.png}">
+                </div>
+                <h4>Flute</h4>
+                <p></p>
+            </div>
+
+            <div class="container-box">
+                <div class="container-img">
+                    <img th:src="@{/images/trumpet (1).png}">
+                </div>
+                <h4>Trumpet</h4>
+                <p></p>
+            </div>
+        </div>
+    </section>
+
+    <!--Sheets Section-->
+    <section class="package" id="sheets">
+        <div class="title">
+            <h2>Sheet music <br> to get started with</h2>
+        </div>
+
+        <div class="package-content">
+            <div class="box">
+                <div class="thum">
+                    <a th:href="@{/details}">
+                        <img th:src="@{/images/FurElise.png}" alt="Für Elise">
+                    </a>
+                    <h3>$5.99</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Beginner</h4>
+                        <p>20+ Sheets</p>
+                    </div>
+                    <div class="stars">
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="thum">
+                    <a th:href="@{/details2}">
+                    <img th:src="@{/images/MoonlightSonata.png}">
+                    </a>
+                    <h3>$5.99</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Intermediate</h4>
+                        <p>15+ Sheets</p>
+                    </div>
+                    <div class="stars">
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="thum">
+                    <img th:src="@{/images/Lacrimosa.png}">
+                    <h3>$5.99</h3>
+                </div>
+
+                <div class="dest-content">
+                    <div class="location">
+                        <h4>Advanced</h4>
+                        <p>30+ Sheets</p>
+                    </div>
+                    <div class="stars">
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                        <a href="#"><i class='bx bxs-star'></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Trainings Section-->
+    <section class="Additional-training" id="trainings">
+        <div class="title">
+            <h2>Our Additional <br> Lessons and Trainings</h2>
+        </div>
+
+        <div class="Training-content">
+            <div class="col-content">
+                <img th:src="@{/images/SightReading.jpg}">
+                <h5>Sight Reading</h5>
+                <p>Learn to read sheet music.</p>
+            </div>
+
+            <div class="col-content">
+                <img th:src="@{/images/Eartraining.jpg}">
+                <h5>Ear Training</h5>
+                <p>Enhance your listening.</p>
+            </div>
+
+            <div class="col-content">
+                <img th:src="@{/images/IntervalTraining.jpg}">
+                <h5>Interval training</h5>
+                <p>Learn tempo control.</p>
+            </div>
+
+            <div class="col-content">
+                <img th:src="@{/images/40690652973_c56ea2078a_b (1).jpg}">
+                <h5>Accompaniment Training</h5>
+                <p>Learn to accompany other instruments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Update-->
+    <section class="Update">
+        <div class="Update-text">
+            <h2>Stay Updated</h2>
+            <p>Get updates for more lessons and <br> trainings</p>
+        </div>
+
+        <div class="send">
+            <form>
+                <input type="Email" placeholder="Write Your Email" required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </section>
+
+    <!--Footer Section-->
+    <section id="contact">
+        <div class="footer">
+            <div class="main">
+                <div class="list">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a th:href="@{/about}">About us</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Team</a></li>
+                    </ul>
+                </div>
+
+                <div class="list">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Why Fermata</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+
+                <div class="list">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><a href="#">Nepal, Lalitpur</a></li>
+                        <li><a href="#">Mahalaxmi Imadol</a></li>
+                        <li><a href="#">9111111111</a></li>
+                        <li><a href="#">FermataInfo@gmail.com</a></li>
+                    </ul>
+                </div>
+
+                <div class="list">
+                    <h4>Connect</h4>
+                    <div class="socials">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--JS link-->
+    <script type="text/javascript" th:src="@{/js/Fermata.js}"></script>
+</body>
+</html>

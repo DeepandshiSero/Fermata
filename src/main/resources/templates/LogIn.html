@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Fermata</title>
+    <link rel="stylesheet" th:href="@{/css/SignIn.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <a class="back-button" th:href="@{/}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <div class="logo">
+            <a th:href="@{/}">
+                <img th:src="@{/images/logo_fermata-removebg-preview.png}" alt="Fermata Logo">
+            </a>
+        </div>
+
+        <!-- Success message (e.g. redirected from signup) -->
+        <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+        <!-- Error alert message -->
+        <div class="alert alert-danger" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+        <form th:action="@{/login}" th:object="${user}" method="post">
+            <div class="form-group">
+                <input type="text" th:field="*{username}" placeholder="Username" required>
+                <div class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="password-field">
+                    <input type="password" th:field="*{password}" placeholder="Password" required>
+                    <i class="fa-solid fa-eye toggle-password" title="Show password" role="button" tabindex="0" aria-label="Toggle password visibility"></i>
+                </div>
+                <div class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+            <div class="recover">
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="member">
+            Not a member? <a th:href="@{/signup}">Sign Up Now</a>
+        </div>
+    </div>
+
+    <script th:src="@{/js/auth.js}"></script>
+</body>
+</html>
