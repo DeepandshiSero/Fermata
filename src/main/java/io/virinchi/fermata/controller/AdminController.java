@@ -32,11 +32,13 @@ public class AdminController {
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
+
         if (!isAdmin(session)) {
             return "redirect:/";
         }
 
         List<User> allUsers = adminService.getAllUsers();
+
         model.addAttribute("totalUsers", allUsers.size());
         model.addAttribute("users", allUsers);
 
@@ -44,59 +46,114 @@ public class AdminController {
     }
 
     @GetMapping("/admin/user/{id}")
-    public String userDetail(@PathVariable Long id, HttpSession session, Model model) {
+    public String userDetail(
+            @PathVariable Long id,
+            HttpSession session,
+            Model model) {
+
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
+
         if (!isAdmin(session)) {
             return "redirect:/";
         }
 
         return adminService.getUserById(id).map(targetUser -> {
-            List<Order> userOrders = orderService.getOrdersForUser(targetUser);
+
+            List<Order> userOrders =
+                    orderService.getOrdersForUser(targetUser);
 
             model.addAttribute("targetUser", targetUser);
             model.addAttribute("orders", userOrders);
-            model.addAttribute("statusOptions", List.of("Pending", "Confirmed", "Shipped", "Delivered", "Cancelled"));
+            model.addAttribute(
+                    "statusOptions",
+                    List.of(
+                            "Pending",
+                            "Confirmed",
+                            "Shipped",
+                            "Delivered",
+                            "Cancelled"
+                    )
+            );
 
             return "AdminUserDetail";
+
         }).orElse("redirect:/admin");
     }
 
     @PostMapping("/admin/piano/remove")
-    public String removeFromPiano(@RequestParam Long userId, HttpSession session) {
+    public String removeFromPiano(
+            @RequestParam Long userId,
+            HttpSession session) {
+
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
+
         if (!isAdmin(session)) {
             return "redirect:/";
         }
+
         adminService.removeUserFromPiano(userId);
+
         return "redirect:/admin/user/" + userId;
     }
 
     @PostMapping("/admin/order/status")
-    public String updateOrderStatus(@RequestParam Long orderId, @RequestParam String status,
-                                    @RequestParam Long userId, HttpSession session) {
+    public String updateOrderStatus(
+            @RequestParam Long orderId,
+            @RequestParam String status,
+            @RequestParam Long userId,
+            HttpSession session) {
+
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
+
         if (!isAdmin(session)) {
             return "redirect:/";
         }
+
         orderService.updateOrderStatus(orderId, status);
+
         return "redirect:/admin/user/" + userId;
     }
 
     @PostMapping("/admin/order/delete")
-    public String deleteOrder(@RequestParam Long orderId, @RequestParam Long userId, HttpSession session) {
+    public String deleteOrder(
+            @RequestParam Long orderId,
+            @RequestParam Long userId,
+            HttpSession session) {
+
         if (session.getAttribute("loggedInUser") == null) {
             return "redirect:/login";
         }
+
         if (!isAdmin(session)) {
             return "redirect:/";
         }
+
         orderService.deleteOrder(orderId);
+
         return "redirect:/admin/user/" + userId;
+    }
+
+    @PostMapping("/admin/user/delete")
+    public String deleteUser(
+            @RequestParam Long userId,
+            HttpSession session) {
+
+        if (session.getAttribute("loggedInUser") == null) {
+            return "redirect:/login";
+        }
+
+        if (!isAdmin(session)) {
+            return "redirect:/";
+        }
+
+        adminService.deleteUser(userId);
+
+        return "redirect:/admin";
     }
 }

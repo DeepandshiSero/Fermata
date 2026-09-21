@@ -28,6 +28,21 @@
         <h2 class="admin-title" th:text="${targetUser.username}">username</h2>
         <p class="admin-subtext" th:text="${targetUser.fullName}">Full Name</p>
 
+        <form th:action="@{/admin/user/delete}"
+              method="post"
+              class="admin-delete-user-form"
+              onsubmit="return confirm('Are you sure you want to permanently delete this user? This action cannot be undone.');">
+
+            <input type="hidden"
+                   name="userId"
+                   th:value="${targetUser.id}" />
+
+            <button type="submit" class="admin-delete-user-btn">
+                Delete User
+            </button>
+
+        </form>
+
         <h3 class="admin-subtitle">Courses</h3>
 
         <ul class="user-list">
