@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${targetUser.username} + ' - Admin - Fermata'">User Detail - Fermata</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">
+        <img th:src="@{/images/logo_fermata-removebg-preview.png}">
+    </a>
+    <ul class="navbar">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/profile}">Profile</a></li>
+    </ul>
+</header>
+
+<section class="admin-section">
+    <div class="admin-card">
+        <a th:href="@{/admin}" class="back-to-admin">&larr; Back to all users</a>
+
+        <h2 class="admin-title" th:text="${targetUser.username}">username</h2>
+        <p class="admin-subtext" th:text="${targetUser.fullName}">Full Name</p>
+
+        <h3 class="admin-subtitle">Courses</h3>
+
+        <ul class="user-list">
+            <li>
+                <span class="user-username">Piano</span>
+                <span class="user-courses" th:text="${targetUser.pianoEnrolled} ? 'Enrolled' : 'Not enrolled'">Status</span>
+                <form th:if="${targetUser.pianoEnrolled}" th:action="@{/admin/piano/remove}" method="post" class="remove-course-form">
+                    <input type="hidden" name="userId" th:value="${targetUser.id}" />
+                    <button type="submit" class="remove-course-btn">Remove from Piano</button>
+                </form>
+            </li>
+        </ul>
+
+        <h3 class="admin-subtitle">Orders</h3>
+
+        <div class="admin-order-empty" th:if="${orders.isEmpty()}">
+            <p>No orders placed yet.</p>
+        </div>
+
+        <div class="admin-order-block" th:each="order : ${orders}">
+            <div class="admin-order-header">
+                <span>Order #<span th:text="${order.id}">1</span></span>
+                <span class="admin-order-total">$<span th:text="${#numbers.formatDecimal(order.totalAmount, 1, 2)}">0.00</span></span>
+            </div>
+
+            <ul class="admin-order-items">
+                <li th:each="item : ${order.items}">
+                    <span th:text="${item.productName}">Item</span>
+                    <span th:text="'x' + ${item.quantity}">x1</span>
+                </li>
+            </ul>
+
+            <form th:action="@{/admin/order/status}" method="post" class="admin-status-form">
+                <input type="hidden" name="orderId" th:value="${order.id}" />
+                <input type="hidden" name="userId" th:value="${targetUser.id}" />
+                <select name="status" class="admin-status-select">
+                    <option th:each="opt : ${statusOptions}"
+                            th:value="${opt}"
+                            th:text="${opt}"
+                            th:selected="${opt == order.status}">
+                    </option>
+                </select>
+                <button type="submit" class="admin-status-btn">Update Status</button>
+            </form>
+
+            <form th:action="@{/admin/order/delete}" method="post" class="admin-delete-form">
+                <input type="hidden" name="orderId" th:value="${order.id}" />
+                <input type="hidden" name="userId" th:value="${targetUser.id}" />
+                <button type="submit" class="admin-delete-btn" onclick="return confirm('Delete this order permanently?');">Delete Order</button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

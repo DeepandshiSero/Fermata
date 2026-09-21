@@ -25,7 +25,7 @@
     </ul>
 
     <div class="nav-icons">
-        <a th:href="@{/cart}" class="icon-btn" aria-label="Cart">
+        <a th:href="@{/Orders}" class="icon-btn" aria-label="Cart">
             <img th:src="@{/images/cart.png}" alt="Cart">
         </a>
         <a th:href="@{/profile}" class="icon-btn" aria-label="Account">
@@ -48,7 +48,7 @@
 
         <div class="profile-actions">
             <a th:href="@{/courses}" class="profile-btn">View current courses</a>
-            <a th:href="@{/cart}" class="profile-btn profile-btn-outline">View orders</a>
+            <a th:href="@{/orders}" class="profile-btn profile-btn-outline">View orders</a>
             <a th:href="@{/admin}" class="profile-btn profile-btn-outline" th:if="${user.role == 'ROLE_ADMIN'}">Admin Page</a>
             <a th:href="@{/logout}" class="profile-btn profile-btn-danger">Log out</a>
         </div>

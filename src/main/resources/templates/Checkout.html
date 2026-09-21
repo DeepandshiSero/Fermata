@@ -65,7 +65,7 @@
                 <span>$<span th:text="${#numbers.formatDecimal(cartTotal, 1, 2)}">0.00</span></span>
             </div>
 
-            <button type="button" class="btn checkout-btn">Proceed to Payment</button>
+            <a th:href="@{/payment}" class="btn checkout-btn" style="display:block; text-align:center; text-decoration:none;">Proceed to Payment</a>
         </div>
     </div>
 </div>

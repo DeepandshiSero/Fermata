@@ -15,7 +15,6 @@
     <a href="#" class="logo">
         <img th:src="@{/images/logo_fermata-removebg-preview.png}">
     </a>
-
     <ul class="navbar">
         <li><a th:href="@{/}">Home</a></li>
         <li><a th:href="@{/profile}">Profile</a></li>
@@ -33,20 +32,16 @@
 
         <h3 class="admin-subtitle">Users</h3>
 
-        <ul class="user-list">
-            <li th:each="u : ${users}">
-                <span class="user-username" th:text="${u.username}">username</span>
-                <span class="user-courses">
-            Current courses:
-            <span th:if="${u.pianoEnrolled}">Piano</span>
-            <span th:unless="${u.pianoEnrolled}">None</span>
-        </span>
-                <form th:if="${u.pianoEnrolled}" th:action="@{/admin/piano/remove}" method="post" class="remove-course-form">
-                    <input type="hidden" name="userId" th:value="${u.id}" />
-                    <button type="submit" class="remove-course-btn">Remove from Piano</button>
-                </form>
-            </li>
-        </ul>
+        <div class="user-grid">
+            <a th:each="u : ${users}" th:href="@{'/admin/user/' + ${u.id}}" class="user-card">
+                <div class="user-card-avatar" th:text="${#strings.substring(u.username, 0, 1)}">D</div>
+                <div class="user-card-info">
+                    <span class="user-card-name" th:text="${u.username}">username</span>
+                    <span class="user-card-sub" th:text="${u.fullName}">Full Name</span>
+                </div>
+                <span class="user-card-arrow">&rarr;</span>
+            </a>
+        </div>
     </div>
 </section>
 </body>

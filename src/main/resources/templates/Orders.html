@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Orders - Fermata</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Orders.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matangi:wght@300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="#" class="logo">
+        <img th:src="@{/images/logo_fermata-removebg-preview.png}">
+    </a>
+    <ul class="navbar">
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/profile}">Profile</a></li>
+    </ul>
+</header>
+
+<section class="orders-section">
+    <div class="orders-card">
+        <h2 class="orders-title">Your Orders</h2>
+
+        <div class="orders-empty" th:if="${orders.isEmpty()}">
+            <p>You haven't placed any orders yet.</p>
+            <a th:href="@{/}" class="orders-link">Browse Sheet Music</a>
+        </div>
+
+        <div class="order-block" th:each="order : ${orders}">
+            <div class="order-header">
+            <span class="order-id">Order</span>
+            <span class="order-status"
+                  th:classappend="${order.status == 'Delivered'} ? 'status-delivered' :
+                          (${order.status == 'Shipped'} ? 'status-shipped' :
+                          (${order.status == 'Cancelled'} ? 'status-cancelled' :
+                          (${order.status == 'Confirmed'} ? 'status-confirmed' : 'status-pending')))"
+                  th:text="${order.status}">Pending</span>
+        </div>
+
+            <ul class="order-items">
+                <li th:each="item : ${order.items}">
+                    <span th:text="${item.productName}">Item</span>
+                    <span th:text="'x' + ${item.quantity}">x1</span>
+                    <span th:text="'$' + ${#numbers.formatDecimal(item.price * item.quantity, 1, 2)}">$0.00</span>
+                </li>
+            </ul>
+
+            <div class="order-total">
+                Total: $<span th:text="${#numbers.formatDecimal(order.totalAmount, 1, 2)}">0.00</span>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
